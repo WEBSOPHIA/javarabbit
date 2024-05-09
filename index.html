@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>All About Rabbits</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/earth.png">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <h1>Rabbit Care 101</h1>
+        </header>
+
+        <nav>
+            <a href="care.html">Rabbit Care</a>
+            <a href="diet.html">Rabbit Diet</a>
+            <a href="habitat.html">Rabbit Habitat</a>
+            <a href="companion.html">Rabbit Companion</a>
+        </nav>
+
+        <header>
+            <h1>Picture of the day</h1>
+        </header>
+        
+        <header id="dayOfWeekHeader">
+            <p id="dayOfWeek"></p>
+        </header>
+        
+        <main>
+            <img id="rabbitImage" src="" alt="Rabbit Image">
+        </main>
+
+        <footer>
+            <p><a href="https://www.bluecross.org.uk/advice/rabbit/wellbeing-and-care/facts-about-rabbits">All About Rabbits</a></p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function updatePageContent() {
+                var header = document.querySelector('header h1');
+                header.textContent = "Rabbit Care 101";
+            }
+
+            function changeCSSProperty() {
+                var navLinks = document.querySelectorAll('nav a');
+                navLinks.forEach(function(link) {
+                    link.style.color = "blue";
+                });
+            }
+
+            function updateContentBasedOnDay() {
+                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                var today = new Date().getDay();
+                var dayOfWeek = days[today];
+
+                var dayOfWeekHeader = document.getElementById('dayOfWeek');
+                dayOfWeekHeader.textContent = "" + dayOfWeek;
+
+                var imageSrcs = {
+                    'Sunday': 'care.jpg',
+                    'Monday': 'diet.jpg',
+                    'Tuesday': 'habitat.jpg',
+                    'Wednesday': 'companion.jpg',
+                    'Thursday': 'care.jpg',
+                    'Friday': 'diet.jpg',
+                    'Saturday': 'habitat.jpg'
+                };
+
+                var rabbitImage = document.getElementById('rabbitImage');
+                var imagePath = imageSrcs[dayOfWeek];
+                rabbitImage.src = imagePath;
+            }
+
+            updatePageContent();
+            changeCSSProperty();
+            updateContentBasedOnDay();
+        });
+    </script>
+</body>
+</html>
